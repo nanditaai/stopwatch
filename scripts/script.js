@@ -1,9 +1,8 @@
 let time = document.querySelector(".time");
-let history = document.querySelector(".history");
 let startButton = document.querySelector(".start");
 let stopButton = document.querySelector(".stop");
 let resetButton = document.querySelector(".reset");
-let markButton = document.querySelector(".mark");
+let breakButton = document.querySelector(".break");
 
 //Add 1/100th of a second to the time.
 function updateTime() {
@@ -23,23 +22,15 @@ stopButton.addEventListener("click", function() {
     startButton.classList.toggle("hidden");
     stopButton.classList.toggle("hidden");
 });
-
+ 
 resetButton.addEventListener("click", function() {
     if (time.textContent == "0.00")
-        return;
-    addToHistory(time.textContent);
-    time.textContent = "0.00";
+        return; 
+    addToHistory(time.textContent); 
+    time.textContent = "0.00"; 
+}); 
+
+breakButton.addEventListener("click", function() { 
+    location.href = "index2.html";
 });
 
-markButton.addEventListener("click", function() {
-    addToHistory(time.textContent);
-});
-
-function addToHistory(count){
-    let record = document.createElement("li");
-    record.textContent = count;
-    history.appendChild(record);
-    record.addEventListener("click", function(){
-        record.remove();
-    });
-}
